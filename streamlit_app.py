@@ -3,6 +3,7 @@ import os
 from PIL import Image
 import openai
 from dotenv import load_dotenv
+import pytesseract
 
 # .env 파일의 환경 변수 로드
 load_dotenv()
@@ -22,9 +23,11 @@ def generate_response(dialogue_text):
     )
     return response.choices[0].text.strip()
 
+# Tesseract 실행 파일의 경로 명시 (Ubuntu에서는 보통 '/usr/bin/tesseract')
+pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
+
 # 이미지에서 텍스트를 추출하는 함수 (OCR)
 def extract_text_from_image(image):
-    import pytesseract
     text = pytesseract.image_to_string(image, lang="kor+eng")
     return text
 
