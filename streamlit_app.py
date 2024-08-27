@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 # .env 파일의 환경 변수 로드
 load_dotenv()
 
+#api키
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # ChatGPT에 요청하는 함수 (임시로 간단한 답장 생성 기능)
